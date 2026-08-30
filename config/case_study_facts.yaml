@@ -1,0 +1,18 @@
+case_studies: {}
+
+fact_schema:
+  utility: null
+  location: null
+  asset_or_project: null
+  problem_statement: null
+  intervention: null
+  project_status: null
+  capacity_or_scale: null
+  capital_cost: null
+  annual_om: null
+  funding: null
+  source_references: []
+
+notes:
+  - This file intentionally contains no unverified utility facts.
+  - Add case studies only after the supporting sources are registered in sources/SOURCE_REGISTER.md.
