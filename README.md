@@ -1,99 +1,177 @@
 # Wastewater Infrastructure Analytics
 
-A reproducible analytics project for evaluating wastewater infrastructure condition, risk, performance, and capital-improvement priorities.
+**Asset evidence → engineering risk prioritization → rehabilitation strategy → lifecycle economics → capital-allocation screening**
 
-## Project goals
+## Project overview
 
-- Consolidate wastewater asset and inspection data into analysis-ready datasets.
-- Quantify asset risk using likelihood-of-failure and consequence-of-failure measures.
-- Identify high-priority infrastructure for maintenance, rehabilitation, or replacement.
-- Support transparent capital planning with repeatable metrics and documented assumptions.
-- Produce maps, tables, and decision-ready summaries as the project develops.
+This portfolio project builds a reproducible wastewater infrastructure decision-support pipeline and asks a consulting-style question:
+
+> **Which wastewater assets show the strongest evidence of condition, capacity, failure, and consequence risk; what interventions should be evaluated next; and how should limited capital funding be prioritized?**
+
+The project is structured to move from utility source data to an auditable engineering-priority and capital-planning workflow rather than stopping at a dashboard or one-off notebook.
+
+## Current analytical state
+
+The repository now contains the complete working framework for:
+
+- wastewater asset ingestion and validation
+- SQLite-based QA and analytical views
+- transparent likelihood-of-failure × consequence-of-failure risk scoring
+- configuration-driven priority assumptions
+- ranked asset engineering priorities
+- planning-level lifecycle cost scenarios
+- constrained capital-budget screening
+- reproducible figures and compact result extracts
+- source/method documentation and reviewer-facing reports
+- unit tests plus an end-to-end synthetic CI smoke test
+
+> **Important:** No utility-specific production dataset is committed to this public repository. The current repository demonstrates the analytical and engineering workflow; utility-specific conclusions require validated local data and calibration.
+
+## What I built
+
+### 1. Reproducible wastewater asset pipeline
+`src/ingest_assets.py` validates a source asset CSV, preserves asset IDs as text, checks duplicate identifiers and criticality values, writes an analysis-ready extract, and loads an indexed SQLite asset model.
+
+### 2. Auditable SQL quality checks
+The `sql/` layer separates data QA and analytical views from Python code:
+
+- `sql/01_quality_checks.sql`
+- `sql/02_build_priority_views.sql`
+
+This makes missing LoF/CoF values, invalid score ranges, and the baseline risk calculation directly inspectable.
+
+### 3. Transparent engineering-risk priority
+
+The baseline model is:
+
+```text
+Risk Priority Number = Likelihood of Failure × Consequence of Failure × Criticality Multiplier
+```
+
+The tested core implementation lives in `src/wastewater_infrastructure_analytics/risk.py`. Engineering assumptions and candidate evidence are documented in `config/priority_score.yaml` rather than hidden in notebook logic.
+
+### 4. Lifecycle economics
+`src/lifecycle_cost_model.py` converts planning-level replacement costs into low/base/high present-value scenarios using assumptions in `config/lifecycle_cost_model.yaml`.
+
+The model keeps scenario factors explicit and is intentionally presented as planning-level screening, not a final engineering estimate or bid forecast.
+
+### 5. Capital-allocation screening
+`src/capital_allocation.py` tests configured budget scenarios using transparent risk-per-dollar screening. The starter method is deliberately simple so its assumptions remain visible before a more advanced constrained optimization model is introduced.
+
+### 6. Reviewer and evidence layer
+The repository includes:
+
+- project charter and project status
+- data dictionary and method notes
+- codebase/reviewer guide
+- current findings and model-readiness reports
+- source register for verified external evidence
+- case-study evidence framework
+- public results/figures structure
+- synthetic test fixture and GitHub Actions CI
 
 ## Repository structure
 
 ```text
 .
+├── README.md
+├── run_pipeline.py
+├── requirements.txt
+├── pyproject.toml
+├── PROJECT_CHARTER.md
+├── PROJECT_STATUS.md
+├── DATA_DICTIONARY.md
+├── METHOD_NOTES.md
+├── CODEBASE_GUIDE.md
+├── src/                   # Python analytical pipeline + tested risk package
+├── sql/                   # QA + priority SQL
+├── config/                # priority, cost, screening, and allocation assumptions
+├── results/               # compact reviewer-friendly analytical outputs
+├── figures/               # reproducible SVG figures
+├── reports/               # consulting findings and model documentation
+├── sources/               # source/evidence audit trail
+├── tests/                 # unit tests + synthetic asset fixture
+├── portfolio/             # compact portfolio-facing material
+├── notebooks/             # exploratory work only
 ├── data/
-│   ├── raw/          # Source data; keep original files unchanged
-│   └── processed/    # Cleaned and derived datasets
-├── notebooks/        # Exploratory analyses and prototypes
-├── src/
-│   └── wastewater_infrastructure_analytics/
-│       ├── __init__.py
-│       └── risk.py   # Core risk-scoring helpers
-├── tests/            # Automated tests
-├── .github/workflows/ci.yml
-└── pyproject.toml
+│   ├── raw/               # original local source exports
+│   ├── processed/         # normalized analysis-ready extracts
+│   └── derived/           # SQLite/intermediate analytical products
+└── .github/workflows/     # automated CI
 ```
 
-## Getting started
+## Code
 
-Requires Python 3.11+.
+Start with [`CODEBASE_GUIDE.md`](CODEBASE_GUIDE.md) and [`src/README.md`](src/README.md).
+
+Main scripts:
+
+```text
+src/ingest_assets.py
+src/run_sql.py
+src/build_engineering_priority.py
+src/lifecycle_cost_model.py
+src/capital_allocation.py
+src/generate_figures.py
+```
+
+Run the pipeline from the repository root:
 
 ```bash
-git clone https://github.com/Boatengs/wastewater-infrastructure-analytics.git
-cd wastewater-infrastructure-analytics
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-python -m pip install --upgrade pip
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+pip install -e .
+python run_pipeline.py --project . --input data/raw/assets.csv
+```
+
+For development:
+
+```bash
 pip install -e ".[dev]"
 pytest
 ```
 
-For geospatial work:
+A synthetic end-to-end example is available through:
 
 ```bash
-pip install -e ".[dev,geo]"
+python run_pipeline.py --project . --input tests/assets_fixture.csv
 ```
 
-## Initial analytical model
+GitHub Actions runs the unit tests and this synthetic pipeline on pushes and pull requests.
 
-The starter package includes a transparent asset-risk calculation based on:
+## Generated deliverables
 
-- **Likelihood of failure (LoF):** 1–5
-- **Consequence of failure (CoF):** 1–5
-- **Criticality multiplier:** positive value, default 1.0
+When a validated asset dataset is connected, the pipeline writes:
 
-The risk priority number is:
+- **Full engineering priority:** `results/asset_engineering_priority.csv`
+- **Top 25 priorities:** `results/top_25_engineering_priorities.csv`
+- **Analysis summary:** `results/analysis_summary.json`
+- **Lifecycle scenarios:** `results/lifecycle_cost_scenarios.csv`
+- **Capital allocation selections:** `results/capital_allocation_selected_assets.csv`
+- **Capital allocation summary:** `results/capital_allocation_summary.csv`
+- **Priority figure:** `figures/executive_dashboard.svg`
+- **Capital reach figure:** `figures/capital_allocation_portfolio_reach.svg`
 
-```text
-Risk = LoF × CoF × Criticality
-```
+## Methods and limitations
 
-This is intentionally simple. It provides a testable baseline that can later be calibrated using CCTV condition grades, pipe age/material, work orders, capacity constraints, environmental sensitivity, service population, failure history, and cost data.
+The project intentionally separates source observations, data-quality gaps, engineering scoring assumptions, modeled costs, and capital-program recommendations.
 
-## Suggested next data fields
+Key limitations at the current stage:
 
-A useful asset-level table can begin with:
+- the 1–5 LoF and CoF model requires utility-specific calibration before production use
+- no missing inspection or condition record is automatically treated as evidence of good condition
+- planning-level cost factors require local bid-history calibration
+- hydraulic, structural, environmental, operational, and constructability review remain necessary before project decisions
+- sensitive utility data should remain in approved storage rather than this public repository
 
-| Field | Example |
-|---|---|
-| `asset_id` | `MH-001245` |
-| `asset_type` | `gravity_main` |
-| `install_year` | `1987` |
-| `material` | `PVC` |
-| `diameter_in` | `12` |
-| `condition_score` | `4` |
-| `likelihood_of_failure` | `3` |
-| `consequence_of_failure` | `5` |
-| `criticality_multiplier` | `1.2` |
-| `latitude` / `longitude` | coordinates |
-| `replacement_cost` | estimated cost |
+See [`METHOD_NOTES.md`](METHOD_NOTES.md), [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md), and [`sources/SOURCE_REGISTER.md`](sources/SOURCE_REGISTER.md).
 
-## Data handling
+## Quick reviewer path
 
-Raw and processed data directories are included as placeholders. Large, sensitive, or restricted utility datasets should not be committed directly to Git. Use approved storage and add local-only file patterns to `.gitignore` as needed.
-
-## Development roadmap
-
-1. Define the source datasets and data dictionary.
-2. Build ingestion and validation routines.
-3. Create condition and failure-risk features.
-4. Add geospatial network/context analysis.
-5. Build prioritization and capital-planning outputs.
-6. Add dashboards or reports once the core metrics are stable.
-
-## License
-
-No license has been selected yet.
+1. Read this README.
+2. Open [`CODEBASE_GUIDE.md`](CODEBASE_GUIDE.md).
+3. Review [`reports/CURRENT_FINDINGS.md`](reports/CURRENT_FINDINGS.md) and [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
+4. Inspect `config/` to see the assumptions outside the code.
+5. Inspect `src/` and `sql/` for reproducibility.
+6. Review `tests/assets_fixture.csv` and `.github/workflows/ci.yml` for the end-to-end smoke test.
