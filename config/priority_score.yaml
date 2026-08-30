@@ -1,0 +1,44 @@
+risk_model:
+  formula: likelihood_of_failure * consequence_of_failure * criticality_multiplier
+  likelihood_scale:
+    min: 1
+    max: 5
+  consequence_scale:
+    min: 1
+    max: 5
+  default_criticality_multiplier: 1.0
+
+risk_categories:
+  low:
+    min: 0
+    max_exclusive: 6
+  moderate:
+    min: 6
+    max_exclusive: 12
+  high:
+    min: 12
+    max_exclusive: 20
+  very_high:
+    min: 20
+
+candidate_likelihood_evidence:
+  - condition_score
+  - asset_age_years
+  - failure_count_5yr
+  - maintenance_burden
+  - corrosion_or_material_risk
+  - infiltration_inflow_indicator
+  - pump_alarm_or_runtime_indicator
+
+candidate_consequence_evidence:
+  - service_consequence_score
+  - environmental_consequence_score
+  - overflow_potential
+  - roadway_or_rail_crossing
+  - critical_customer_impact
+  - redundancy
+  - repair_access_complexity
+
+notes:
+  - The baseline model is a transparent screening framework, not a calibrated failure-probability model.
+  - Local utilities should document and approve scoring rules before production use.
