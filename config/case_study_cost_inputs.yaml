@@ -1,0 +1,18 @@
+case_studies: {}
+
+required_fields:
+  - estimate_year
+  - capital_cost
+  - cost_basis
+  - source_reference
+
+optional_fields:
+  - annual_om
+  - design_capacity
+  - project_length_or_asset_count
+  - funding_source
+  - contingency_basis
+
+notes:
+  - Add only verified public cost inputs or explicitly approved utility data.
+  - Preserve the estimate year and source so costs are not compared without context.
