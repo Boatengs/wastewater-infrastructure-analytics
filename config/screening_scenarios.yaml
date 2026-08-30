@@ -1,0 +1,26 @@
+data_completeness:
+  required_for_priority:
+    - asset_id
+    - asset_type
+    - likelihood_of_failure
+    - consequence_of_failure
+  preferred:
+    - criticality_multiplier
+    - replacement_cost
+    - install_year
+    - material
+    - diameter_in
+    - length_ft
+
+screening_rules:
+  include_missing_cost_in_risk_ranking: true
+  include_missing_cost_in_capital_allocation: false
+  missing_criticality_multiplier_default: 1.0
+  preserve_missing_condition_as_missing: true
+
+publication:
+  expose_coordinates_by_default: false
+  expose_sensitive_asset_details_by_default: false
+
+notes:
+  - Screening assumptions should be reviewed against utility data governance and asset-management policy.
