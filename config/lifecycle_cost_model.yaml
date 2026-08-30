@@ -1,0 +1,16 @@
+analysis_horizon_years: 20
+discount_rate: 0.04
+
+capital_cost_factor:
+  low: 0.85
+  base: 1.00
+  high: 1.25
+
+annual_om_fraction_of_base_capex:
+  low: 0.005
+  base: 0.010
+  high: 0.020
+
+notes:
+  - Replacement cost inputs are planning-level unless a documented project estimate is available.
+  - Factors are placeholders for scenario analysis and must be calibrated to local bid history and asset class.
