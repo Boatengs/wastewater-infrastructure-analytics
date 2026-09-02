@@ -10,6 +10,18 @@ This portfolio project builds a reproducible wastewater infrastructure decision-
 
 The project is structured to move from utility source data to an auditable engineering-priority and capital-planning workflow rather than stopping at a dashboard or one-off notebook.
 
+## Visual proof — synthetic smoke-test fixture
+
+The public repository does not contain utility production data, so the committed visuals below are generated from [`tests/assets_fixture.csv`](tests/assets_fixture.csv). They demonstrate the actual scoring and allocation code paths used by the end-to-end smoke test rather than presenting fabricated utility findings.
+
+![Synthetic wastewater asset risk priorities](figures/executive_dashboard.svg)
+
+**What this shows:** the five-asset fixture is ranked with the project’s transparent `LoF × CoF × criticality` formula. In this demonstration, the pump station and two older conveyance assets rise to the top of the screening queue. These are synthetic test records, not real utility recommendations.
+
+![Synthetic capital budget scenario reach](figures/capital_allocation_portfolio_reach.svg)
+
+**What this shows:** the configured greedy risk-per-dollar allocator selects three fixture assets under the $1M scenario and all five once the available budget reaches $5M. The flat line at higher budgets reflects the deliberately small five-asset smoke-test dataset, not a real capital-program saturation point.
+
 ## Current analytical state
 
 The repository now contains the complete working framework for:
@@ -170,8 +182,9 @@ See [`METHOD_NOTES.md`](METHOD_NOTES.md), [`DATA_DICTIONARY.md`](DATA_DICTIONARY
 ## Quick reviewer path
 
 1. Read this README.
-2. Open [`CODEBASE_GUIDE.md`](CODEBASE_GUIDE.md).
-3. Review [`reports/CURRENT_FINDINGS.md`](reports/CURRENT_FINDINGS.md) and [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
-4. Inspect `config/` to see the assumptions outside the code.
-5. Inspect `src/` and `sql/` for reproducibility.
-6. Review `tests/assets_fixture.csv` and `.github/workflows/ci.yml` for the end-to-end smoke test.
+2. Review the two committed demonstration figures above.
+3. Open [`CODEBASE_GUIDE.md`](CODEBASE_GUIDE.md).
+4. Review [`reports/CURRENT_FINDINGS.md`](reports/CURRENT_FINDINGS.md) and [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
+5. Inspect `config/` to see the assumptions outside the code.
+6. Inspect `src/` and `sql/` for reproducibility.
+7. Review `tests/assets_fixture.csv` and `.github/workflows/ci.yml` for the end-to-end smoke test.
