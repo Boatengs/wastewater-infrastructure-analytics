@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="712.8pt" height="424.8pt" viewBox="0 0 712.8 424.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-02T18:58:53.015976</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 424.8 L 712.8 424.8 L 712.8 0 L 0 0 z" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 78.045 362.832 L 695.52 362.832 L 695.52 26.88 L 78.045 26.88 z" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3"><path d="M 78.045 347.561455 L 201.54 347.561455 L 201.54 296.659636 L 78.045 296.659636 z" style="fill: #1f77b4"/></g>
+   <g id="patch_4"><path d="M 78.045 283.934182 L 213.8895 283.934182 L 213.8895 233.032364 L 78.045 233.032364 z" style="fill: #1f77b4"/></g>
+   <g id="patch_5"><path d="M 78.045 220.306909 L 506.058 220.306909 L 506.058 169.405091 L 78.045 169.405091 z" style="fill: #1f77b4"/></g>
+   <g id="patch_6"><path d="M 78.045 156.679636 L 572.025 156.679636 L 572.025 105.777818 L 78.045 105.777818 z" style="fill: #1f77b4"/></g>
+   <g id="patch_7"><path d="M 78.045 93.052364 L 695.52 93.052364 L 695.52 42.150545 L 78.045 42.150545 z" style="fill: #1f77b4"/></g>
+   <g id="matplotlib.axis_1"><g id="xtick_1"><g id="line2d_1"><defs><path id="m7a38bc750c" d="M 0 0 L 0 3.5" style="stroke: #000000; stroke-width: 0.8"/></defs><g><use xlink:href="#m7a38bc750c" x="78.045" y="362.832" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_1"><text style="font-size: 10px; font-family: DejaVu Sans" x="74.86375" y="377.430438">0</text></g></g>
+   <g id="xtick_2"><g id="line2d_2"><g><use xlink:href="#m7a38bc750c" x="180.9575" y="362.832" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_2"><text style="font-size: 10px; font-family: DejaVu Sans" x="177.77625" y="377.430438">5</text></g></g>
+   <g id="xtick_3"><g id="line2d_3"><g><use xlink:href="#m7a38bc750c" x="283.87" y="362.832" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_3"><text style="font-size: 10px; font-family: DejaVu Sans" x="277.5075" y="377.430438">10</text></g></g>
+   <g id="xtick_4"><g id="line2d_4"><g><use xlink:href="#m7a38bc750c" x="386.7825" y="362.832" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_4"><text style="font-size: 10px; font-family: DejaVu Sans" x="380.42" y="377.430438">15</text></g></g>
+   <g id="xtick_5"><g id="line2d_5"><g><use xlink:href="#m7a38bc750c" x="489.695" y="362.832" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_5"><text style="font-size: 10px; font-family: DejaVu Sans" x="483.3325" y="377.430438">20</text></g></g>
+   <g id="xtick_6"><g id="line2d_6"><g><use xlink:href="#m7a38bc750c" x="592.6075" y="362.832" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_6"><text style="font-size: 10px; font-family: DejaVu Sans" x="586.245" y="377.430438">25</text></g></g>
+   <g id="xtick_7"><g id="line2d_7"><g><use xlink:href="#m7a38bc750c" x="695.52" y="362.832" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_7"><text style="font-size: 10px; font-family: DejaVu Sans" x="689.1575" y="377.430438">30</text></g></g>
+   <g id="text_8"><text style="font-size: 10px; font-family: DejaVu Sans" x="294.648906" y="391.108562">Risk priority number (LoF × CoF × criticality)</text></g></g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1"><g id="line2d_8"><defs><path id="m2eea0992ff" d="M 0 0 L -3.5 0" style="stroke: #000000; stroke-width: 0.8"/></defs><g><use xlink:href="#m2eea0992ff" x="78.045" y="322.110545" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_9"><text style="font-size: 10px; font-family: DejaVu Sans" x="33.881" y="325.909764">GM-002</text></g></g>
+    <g id="ytick_2"><g id="line2d_9"><g><use xlink:href="#m2eea0992ff" x="78.045" y="258.483273" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_10"><text style="font-size: 10px; font-family: DejaVu Sans" x="33.784125" y="262.282491">MH-001</text></g></g>
+    <g id="ytick_3"><g id="line2d_10"><g><use xlink:href="#m2eea0992ff" x="78.045" y="194.856" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_11"><text style="font-size: 10px; font-family: DejaVu Sans" x="35.182562" y="198.655219">FM-001</text></g></g>
+    <g id="ytick_4"><g id="line2d_11"><g><use xlink:href="#m2eea0992ff" x="78.045" y="131.228727" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_12"><text style="font-size: 10px; font-family: DejaVu Sans" x="33.881" y="135.027946">GM-001</text></g></g>
+    <g id="ytick_5"><g id="line2d_12"><g><use xlink:href="#m2eea0992ff" x="78.045" y="67.601455" style="stroke: #000000; stroke-width: 0.8"/></g></g><g id="text_13"><text style="font-size: 10px; font-family: DejaVu Sans" x="37.365562" y="71.400673">PS-001</text></g></g>
+    <g id="text_14" transform="translate(15.118125 213.528656) rotate(-90)"><text style="font-size: 10px; font-family: DejaVu Sans">Asset ID</text></g>
+   </g>
+   <g id="patch_8"><path d="M 78.045 362.832 L 78.045 26.88" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/></g>
+   <g id="patch_9"><path d="M 78.045 362.832 L 695.52 362.832" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/></g>
+   <g id="text_15"><text style="font-size: 9px; font-family: DejaVu Sans" x="211.83125" y="325.173514">6.0</text></g>
+   <g id="text_16"><text style="font-size: 9px; font-family: DejaVu Sans" x="224.18075" y="261.546241">6.6</text></g>
+   <g id="text_17"><text style="font-size: 9px; font-family: DejaVu Sans" x="516.34925" y="197.918969">20.8</text></g>
+   <g id="text_18"><text style="font-size: 9px; font-family: DejaVu Sans" x="582.31625" y="134.291696">24.0</text></g>
+   <g id="text_19"><text style="font-size: 9px; font-family: DejaVu Sans" x="705.81125" y="70.664423">30.0</text></g>
+   <g id="text_20"><text style="font-size: 12px; font-family: DejaVu Sans" x="242.11125" y="20.88">Synthetic fixture — wastewater asset risk priorities</text></g>
+  </g>
+  <g id="text_21"><text style="font-size: 9px; font-family: DejaVu Sans" x="155.532" y="415.528125">Demonstration output generated from tests/assets_fixture.csv — not utility production data.</text></g>
+ </g>
+</svg>
